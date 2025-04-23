@@ -1,0 +1,79 @@
+@startuml
+' ========= Package organisation =========
+package "Image Processing" {
+  ' --- Gestion des images et I/O ---
+  class ImageManager {
+    - int height
+    - int width
+    - double[][] data
+    + loadImage(path : String) : void
+    + addGaussianNoise(sigma : double) : void
+    + saveImage(path : String) : void
+  }
+
+  ' --- Extraction des patchs (Strategy) ---
+  abstract class PatchExtractor {
+    + List<Patch> extractPatches(img : ImageManager, s : int) : List<Patch>
+  }
+
+  class GlobalPatchExtractor {
+  }
+  class LocalPatchExtractor {
+    - int windowSize
+  }
+  PatchExtractor <|-- GlobalPatchExtractor
+  PatchExtractor <|-- LocalPatchExtractor
+
+  ' --- Patch ---
+  class Patch {
+    - int x
+    - int y
+    - double[][] data
+    + double[] vectorize() : double[]
+    + reconstruct(vec : double[]) : void
+  }
+
+  ' --- Cœur algorithmique ---
+  class PCAEngine {
+    - double[] meanVector
+    - double[][] components
+    - double[] eigenvalues
+    + fit(patches : Matrix) : void
+    + Matrix transform(patches : Matrix) : Matrix
+    + Matrix inverseTransform(coeffs : Matrix) : Matrix
+  }
+
+  class Thresholding {
+    - double lambda
+    - String method  "VISU | BAYES"
+    - String mode    "HARD | SOFT"
+    + double computeThreshold(sigma : double, L : int) : double
+    + Matrix apply(coeffs : Matrix) : Matrix
+  }
+
+  class Reconstructor {
+    - int stride
+    - int imageHeight
+    - int imageWidth
+    + void assemble(patchList : List<Patch>)
+    + double[][] getReconstructedImage() : double[][]
+  }
+
+  class Metrics {
+    + double mse(original : double[][], denoised : double[][]) : double
+    + double psnr(original : double[][], denoised : double[][]) : double
+  }
+}
+
+' ========= Relationships =========
+ImageManager --> PatchExtractor : "uses"
+PatchExtractor --> Patch : "creates"
+
+ImageManager --> PCAEngine : "provides data"
+Patch --> PCAEngine : "vectorize()"
+PCAEngine --> Thresholding : "uses"
+PCAEngine --> Patch : "inverseTransform()"
+Reconstructor --> Patch : "collects"
+Reconstructor --> ImageManager : "returns image"
+Metrics --> ImageManager : "evaluates"
+@enduml
