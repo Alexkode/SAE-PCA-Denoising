@@ -8,55 +8,53 @@ Le projet implémente une méthode de débruitage qui :
 1. Découpe l'image en petits patchs
 2. Applique l'ACP pour réduire le bruit
 3. Reconstruit l'image à partir des patchs débruités
+4. Évalue la qualité du résultat obtenu
 
 ## Structure du Projet
 
 ```
 SAE-PCA-Denoising/
-├── README.md                # Ce fichier
-├── docs/                    # Documentation
-│   └── Livrable1.pdf       # Document de conception
-├── images/                  # Base d'images
-│   ├── train/              # Images d'entraînement
-│   │   ├── original/       # Images originales
-│   │   └── noisy/         # Images bruitées
-│   └── test/               # Images de test
-│       ├── original/       # Images originales
-│       └── noisy/         # Images bruitées
-├── src/                    # Code source
-├── tests/                  # Tests unitaires
-└── meta.json              # Métadonnées des images
+├── README.md                        # Ce fichier
+├── docs/                            # Documentation
+│   ├── uml/                         # Diagrammes UML et explications
+│   │   ├── diagrammeClasses.png     # Diagramme de classes
+│   │   ├── diagrammeUseCase.png     # Diagramme de cas d'utilisation
+│   │   ├── diagrammeActivite.png    # Diagramme d'activité
+│   │   ├── ExplicationDiagrammeClasses.md   # Explication détaillée des classes
+│   │   ├── ExplicationDiagrammeUseCase.md   # Explication des cas d'utilisation
+│   │   └── ExplicationDiagrammeActivite.md  # Explication du flux d'activité
+│   ├── planning/                    # Organisation du projet
+│   │   ├── taches_groupe.md         # Répartition des tâches
+│   │   └── risques.md               # Analyse des risques
+│   ├── explication_scientifique.md  # Fondements mathématiques de l'ACP
+│   └── gestion_images.md            # Documentation sur la manipulation d'images
+├── images/                          # Base d'images
+│   ├── train/                       # Images d'entraînement
+│   │   ├── original/                # Images originales
+│   │   └── noisy/                   # Images bruitées
+│   └── test/                        # Images de test
+│       ├── original/                # Images originales
+│       └── noisy/                   # Images bruitées
+└── meta.json                        # Métadonnées des images
 ```
 
 ## Installation
 
-1. Cloner le dépôt :
+Pour obtenir une copie du projet :
 ```bash
 git clone https://github.com/Alexkode/SAE-PCA-Denoising.git
 ```
 
-2. Installer les dépendances :
-```bash
-pip install -r requirements.txt
-```
+## Approche technique
 
-## Utilisation
+Le débruitage d'images par ACP repose sur les principes suivants :
+1. **Extraction de patchs** : l'image est divisée en petits blocs qui se chevauchent
+2. **Vectorisation** : chaque patch est transformé en vecteur
+3. **ACP** : les vecteurs sont projetés dans une base orthonormale qui maximise la variance
+4. **Seuillage** : les coefficients de faible amplitude (principalement du bruit) sont supprimés
+5. **Reconstruction** : les patchs débruités sont replacés dans l'image
 
-```python
-from denoising import ImageDenoiser
-
-# Charger et débruiter une image
-denoiser = ImageDenoiser()
-denoised_image = denoiser.denoise("path/to/image.jpg")
-```
-
-## Contribution
-
-1. Fork le projet
-2. Créer une branche (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+Pour plus de détails sur l'implémentation, consultez notre documentation dans le dossier `docs/`.
 
 ## Équipe
 
