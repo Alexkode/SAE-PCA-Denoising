@@ -54,7 +54,7 @@ Bien que chaque membre ait un rôle principal, tous participent aux différents 
 
 ### Outils
 - GitHub pour le code et la documentation
-- Discord pour la communication
+- Whatsapp pour la communication
 - Google Docs pour la rédaction collaborative
 - PlantUML pour les diagrammes
 

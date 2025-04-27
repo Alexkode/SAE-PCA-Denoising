@@ -32,7 +32,7 @@ SAE-PCA-Denoising/
 
 1. Cloner le dépôt :
 ```bash
-git clone [URL_DU_REPO]
+git clone https://github.com/Alexkode/SAE-PCA-Denoising.git
 ```
 
 2. Installer les dépendances :
@@ -60,10 +60,11 @@ denoised_image = denoiser.denoise("path/to/image.jpg")
 
 ## Équipe
 
-- [Membre 1] - Chef de projet
-- [Membre 2] - Responsable technique
-- [Membre 3] - Data Scientist
-- [Membre 4] - Documentation
+- Alexis - Chef de projet (Coordination générale, planning, suivi des deadlines, GitHub)
+- Hugo - Développement (Implémentation Java, tests unitaires, revue de code)
+- Juan-Manuel - Analyse (Aspects mathématiques, ACP, optimisation algorithmes)
+- Clémentine - Documentation (Rédaction rapport, documentation technique, relecture)
+- Angie - Documentation (Rédaction rapport, documentation technique, relecture)
 
 ## Licence
 
