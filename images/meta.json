@@ -44,13 +44,6 @@
                 "type": "original",
                 "utilisation": "test"
             },
-            "OeuvreDArtJMTT.jpeg": {
-                "category": "art",
-                "description": "Œuvre d'art JMTT",
-                "format": "jpeg",
-                "type": "original",
-                "utilisation": "test"
-            },
             "fille.jpg": {
                 "category": "portrait",
                 "description": "Portrait d'une fille",
