@@ -49,7 +49,7 @@ Bien que chaque membre ait un rôle principal, tous participent aux différents 
 
 ### Réunions
 - Stand-up quotidien (15 min) sur Discord
-- Réunion hebdomadaire (1h) en présentiel
+- Réunion hebdomadaire (1h) en présentiel (hors créneaux dédiés)
 - Points techniques au besoin
 
 ### Outils
